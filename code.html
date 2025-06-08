@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>東方文化茶藝館</title>
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-text: #6b7280;
+      --color-primary: #111827;
+      --color-primary-light: #374151;
+      --color-accent: #1f2937;
+      --border-radius: 0.75rem;
+      --shadow-light: rgba(0,0,0,0.05);
+      --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      --transition: 0.3s ease;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      font-size: 18px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    a:hover,
+    a:focus {
+      color: var(--color-primary-light);
+      outline: none;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--color-bg);
+      box-shadow: 0 1px 4px var(--shadow-light);
+      z-index: 1000;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      user-select: none;
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.5rem;
+      border-radius: var(--border-radius);
+      transition: background-color var(--transition), color var(--transition);
+    }
+    nav ul li a:hover,
+    nav ul li a:focus {
+      background-color: var(--color-primary-light);
+      color: #fff;
+      outline: none;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+      text-align: center;
+      color: var(--color-primary);
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+    .hero h1 {
+      font-weight: 800;
+      font-size: 3.5rem;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+      user-select: none;
+    }
+    .hero p {
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: var(--color-primary-light);
+      margin-bottom: 2rem;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-primary {
+      display: inline-block;
+      background-color: var(--color-primary);
+      color: white;
+      font-weight: 700;
+      font-size: 1.125rem;
+      padding: 0.75rem 2.25rem;
+      border-radius: var(--border-radius);
+      box-shadow: 0 5px 10px rgba(17,24,39,0.15);
+      cursor: pointer;
+      transition: transform var(--transition), background-color var(--transition), box-shadow var(--transition);
+      user-select: none;
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: var(--color-primary-light);
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(55,65,81,0.3);
+      outline: none;
+    }
+
+    /* Sections */
+    section {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+    section:not(:last-child) {
+      border-bottom: 1px solid var(--shadow-light);
+    }
+
+    /* Menu Cards */
+    .menu-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-top: 2rem;
+    }
+    .card {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 8px var(--shadow-light);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow var(--transition), transform var(--transition);
+      cursor: default;
+      user-select: none;
+    }
+    .card:hover,
+    .card:focus-within {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transform: translateY(-4px);
+    }
+    .card h3 {
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      color: var(--color-primary);
+      user-select: text;
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+    .card p {
+      flex-grow: 1;
+      color: var(--color-text);
+      font-size: 1rem;
+      user-select: text;
+      font-family: 'Inter', sans-serif;
+    }
+    .price {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--color-primary-light);
+      margin-top: 1rem;
+      user-select: text;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* About Section */
+    .about-text {
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--color-primary-light);
+      font-size: 1.125rem;
+      line-height: 1.6;
+      user-select: text;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Contact */
+    .contact-info {
+      text-align: center;
+      max-width: 400px;
+      margin: 0 auto;
+      color: var(--color-primary-light);
+      font-size: 1.125rem;
+      user-select: text;
+      font-family: 'Inter', sans-serif;
+    }
+    .contact-info a {
+      color: var(--color-primary);
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      padding: 2rem 0;
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--color-primary-light);
+      user-select: none;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 2.25rem;
+      }
+      nav ul {
+        gap: 1rem;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <div class="container nav-container" role="banner">
+      <div class="logo" aria-label="東方文化茶藝館 Logo">東方文化茶藝館</div>
+      <nav role="navigation" aria-label="Primary navigation">
+        <ul>
+          <li><a href="#hero">首頁</a></li>
+          <li><a href="#menu">菜單</a></li>
+          <li><a href="#about">關於我們</a></li>
+          <li><a href="#contact">聯繫方式</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero" role="region" aria-label="Introduction">
+      <div class="container">
+        <h1>東方文化茶藝館</h1>
+        <p>經典茶藝，傳承文化，品味每一杯醇香。</p>
+        <button class="btn-primary" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})" aria-label="查看菜單">查看菜單</button>
+      </div>
+    </section>
+
+    <section id="menu" role="region" aria-label="Tea menu">
+      <div class="container">
+        <h2 style="color: var(--color-primary); font-weight: 800; font-size: 2.5rem; text-align:center; user-select:none;">精選茶品</h2>
+        <div class="menu-grid">
+          <article class="card" tabindex="0" aria-labelledby="tea1-title" role="group">
+            <h3 id="tea1-title">高山烏龍</h3>
+            <p>採自高海拔茶園，香氣馥郁，口感圓潤甘醇。</p>
+            <div class="price">120$</div>
+          </article>
+
+          <article class="card" tabindex="0" aria-labelledby="tea2-title" role="group">
+            <h3 id="tea2-title">嚴選阿薩姆</h3>
+            <p>濃烈厚實的阿薩姆紅茶，帶有獨特麥芽香味。</p>
+            <div class="price">120$</div>
+          </article>
+
+          <article class="card" tabindex="0" aria-labelledby="tea3-title" role="group">
+            <h3 id="tea3-title">精品荷葉紅</h3>
+            <p>荷葉調味紅茶，清新怡人，回味無窮。</p>
+            <div class="price">120$</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" role="region" aria-label="About 東方文化茶藝館">
+      <div class="container">
+        <h2 style="color: var(--color-primary); font-weight: 800; font-size: 2.5rem; text-align:center; user-select:none;">關於我們</h2>
+        <p class="about-text">
+          東方文化茶藝館致力於傳承傳統茶藝文化，精選優質茶葉，為顧客帶來最高品質的茶飲體驗。來訪我們的茶館，感受那份寧靜與溫暖，品味經典，不只是喝茶，而是一種生活的藝術。
+        </p>
+      </div>
+    </section>
+
+    <section id="contact" role="region" aria-label="Contact Us">
+      <div class="container">
+        <h2 style="color: var(--color-primary); font-weight: 800; font-size: 2.5rem; text-align:center; user-select:none;">聯絡方式</h2>
+        <p class="contact-info">
+          台北市茶園路123號<br />
+          電話: <a href="tel:+886123456789" aria-label="Call Tea Shop">+886 123 456 789</a><br />
+          電子郵件: <a href="mailto:contact@orientaltea.com" aria-label="Email Tea Shop">contact@orientaltea.com</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2024 東方文化茶藝館。版權所有。
+  </footer>
+</body>
+</html>
+
